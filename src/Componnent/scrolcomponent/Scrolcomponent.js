@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text,ScrollView,StyleSheet, RefreshControl,SafeAreaView,ListView ,Dimensions,Image,TouchableOpacity } from 'react-native';
+import { View, Text,ScrollView,StyleSheet, RefreshControl,SafeAreaView,ListView ,
+  Dimensions,Image,TouchableOpacity } from 'react-native';
 import * as _ from "lodash";
 import {strings} from '../../locales/i18n';
 const rows = 3;
@@ -33,6 +34,9 @@ export default class Scrolcomponent extends Component {
     </View>
     );
   }
+  filteby(mm){
+    _.filter( this.state.mdata, { name: mm })
+  }
   roworcol(){
 return (
   
@@ -64,9 +68,9 @@ if(this.props.stype==1){
   
   
 }else if(this.props.stype==3){
-  return       this.roworcol()  
+  return   this.roworcol()   
 }else{
-  return    this.roworcol()
+  return    this.roworcol()   
 }
 
   }
@@ -78,7 +82,7 @@ if(this.props.stype==1){
        <ScrollView
        horizontal={this.props.hor}
        >
-       
+       { this.filteby(this.props.names)  }
        {this.scrolltype()}
       
      
