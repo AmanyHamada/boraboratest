@@ -4,8 +4,11 @@
  * @format
  */
 import React, { Component } from 'react';
-import { View, Text,TouchableOpacity,StyleSheet } from 'react-native';
+import { View, Text,TouchableOpacity,StyleSheet,TextInput } from 'react-native';
 import Scrolcomponent from './src/Componnent/scrolcomponent/Scrolcomponent';
+import Scrllos from './src/Componnent/scrolcomponent/Scrllos';
+
+
 import {strings} from './src/locales/i18n';
 
 class App extends Component {
@@ -26,7 +29,7 @@ class App extends Component {
    {id:'10',name: 'm',pic:require('./src/assest/g1.png')},
    {id:'11',name: 'n',pic:require('./src/assest/g1.png')},
    {id:'12',name: 'o',pic:require('./src/assest/g1.png')},
-   {id:'13',name:'q',pic:require('./src/assest/g1.png')},
+   {id:'13',name:'a',pic:require('./src/assest/g1.png')},
    {id:'14',name:'h',pic:require('./src/assest/g1.png')},
    {id:'15',name: 'j',pic:require('./src/assest/g1.png')},
    {id:'16',name: 's',pic:require('./src/assest/g1.png')},
@@ -43,7 +46,8 @@ class App extends Component {
     this.state = {
       stype:3,
       hor:false,
-      text:'2'
+      text:'2',
+      txt:''
     };
   }
 
@@ -56,6 +60,7 @@ class App extends Component {
         mdata={this.pics}
         hor={this.state.hor}
         colss={this.state.text}
+        names={this.state.txt}
         />
         <View style={{backgroundColor:'white',width:'100%',height:60,justifyContent:'space-between',alignItems:'center',
         flexDirection:'row'
@@ -92,8 +97,14 @@ class App extends Component {
             >
             <Text  style={{color:'white'}}>{strings("language")}</Text>
             </TouchableOpacity> 
+            <TextInput
+            style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+            placeholder="filter here!"
+            onChangeText={(txt) => this.setState({txt})}
+            value={this.state.txt}
+          />
             <TouchableOpacity style={styles.btn}
-            onPress={()=>this.setState({})} 
+            onPress={()=>this.setState({txt:this.state.txt})} 
             >
             <Text  style={{color:'white'}}>{strings("descnding")}</Text>
             </TouchableOpacity> 
